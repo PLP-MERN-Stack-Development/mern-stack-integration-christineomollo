@@ -1,10 +1,12 @@
 // server.js - Main server file for the MERN blog application
 
+require('dotenv').config();
+
 // Import required modules
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv');
+// Removed: const dotenv = require('dotenv'); // Not needed if loaded above
 const path = require('path');
 
 // Import routes
@@ -12,12 +14,10 @@ const postRoutes = require('./routes/posts');
 const categoryRoutes = require('./routes/categories');
 const authRoutes = require('./routes/auth');
 
-// Load environment variables
-dotenv.config();
-
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 5000;
+// --- 2. Use the environment PORT (5001) or safer default (5001) ---
+const PORT = process.env.PORT || 5001; 
 
 // Middleware
 app.use(cors());
@@ -60,7 +60,8 @@ mongoose
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      // Confirms which port we are actually listening on
+      console.log(`Server running on port ${PORT}`); 
     });
   })
   .catch((err) => {
@@ -75,4 +76,4 @@ process.on('unhandledRejection', (err) => {
   process.exit(1);
 });
 
-module.exports = app; 
+module.exports = app;

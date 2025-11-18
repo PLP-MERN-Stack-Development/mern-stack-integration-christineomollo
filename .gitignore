@@ -1,0 +1,9 @@
+Keep local environment variables secure!
+
+.env
+.env.*
+!.env.example # Share this template, but not the secrets
+
+macOS Files
+
+.DS_Store

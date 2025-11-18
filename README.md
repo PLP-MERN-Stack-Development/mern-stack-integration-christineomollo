@@ -1,78 +1,137 @@
-# MERN Stack Integration Assignment
+# MERN Stack Blog Application
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+A full-stack blog application built with MongoDB, Express.js, React.js, and Node.js.
 
-## Assignment Overview
+## Features
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+- User authentication (register/login)
+- Create, read, update, delete blog posts
+- Categories for organizing posts
+- Comments on posts
+- Image uploads
+- Responsive UI with React and Tailwind CSS
+- RESTful API with validation
+
+## Tech Stack
+
+- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS v3, React Router
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Authentication**: JWT
+- **Validation**: Express Validator
+
+## Setup Instructions
+
+### Prerequisites
+
+- Node.js (v18+)
+- MongoDB (local or cloud instance)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd mern-stack-integration-christineomollo
+   ```
+
+2. **Install server dependencies**
+   ```bash
+   cd server
+   npm install
+   ```
+
+3. **Install client dependencies**
+   ```bash
+   cd ..
+   npm install
+   ```
+   > **Note**: This project uses Tailwind CSS v3 with shadcn/ui components.
+
+4. **Environment Setup**
+
+   Copy the example environment files:
+   ```bash
+   cp server/.env.example server/.env
+   cp .env.example .env
+   ```
+
+   Update the `.env` files with your configuration:
+   - `server/.env`: Set MongoDB URI, JWT secret, etc.
+   - `.env`: Set API URL
+
+5. **Start MongoDB**
+   Make sure MongoDB is running on your system.
+
+6. **Start the development servers**
+
+   **Terminal 1 - Backend:**
+   ```bash
+   cd server
+   npm run dev
+   ```
+
+   **Terminal 2 - Frontend:**
+   ```bash
+   npm run dev
+   ```
+
+7. **Access the application**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:5001
+
+## API Endpoints
+
+### Authentication
+- `POST /api/auth/register` - Register new user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/me` - Get current user
+- `POST /api/auth/logout` - Logout user
+
+### Posts
+- `GET /api/posts` - Get all posts (with pagination, filtering)
+- `GET /api/posts/:id` - Get single post
+- `POST /api/posts` - Create new post (authenticated)
+- `PUT /api/posts/:id` - Update post (authenticated)
+- `DELETE /api/posts/:id` - Delete post (authenticated)
+- `GET /api/posts/:id/comments` - Get comments for a post
+- `POST /api/posts/:id/comments` - Add comment to a post (authenticated)
+
+### Categories
+- `GET /api/categories` - Get all categories
+- `GET /api/categories/:id` - Get single category
+- `POST /api/categories` - Create new category (authenticated)
+- `PUT /api/categories/:id` - Update category (authenticated)
+- `DELETE /api/categories/:id` - Delete category (authenticated)
 
 ## Project Structure
 
 ```
-mern-blog/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── context/        # React context providers
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Express.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Mongoose models
-│   ├── routes/             # API routes
+mern-stack-integration-christineomollo/
+├── server/                 # Backend
 │   ├── middleware/         # Custom middleware
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
+│   ├── models/            # Mongoose models
+│   ├── routes/            # API routes
+│   ├── uploads/           # File uploads
+│   ├── server.js          # Main server file
+│   └── package.json
+├── src/                   # Frontend React app
+│   ├── components/        # React components
+│   ├── pages/            # Page components
+│   ├── services/         # API services
+│   └── ...
+├── public/               # Static assets
+└── package.json
 ```
 
-## Getting Started
+## Contributing
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
-## Files Included
+## License
 
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
-
-## Requirements
-
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
-
-## Submission
-
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
-
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
-
-## Resources
-
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
+This project is licensed under the MIT License.
